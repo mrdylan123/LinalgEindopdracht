@@ -44,6 +44,8 @@ int main()
 				SDL_RenderClear(renderer);
 
 				graph.draw(*renderer);
+
+				SDL_SetRenderDrawColor(renderer, 255, 0, 0, SDL_ALPHA_OPAQUE);
 				graph.drawShape(*renderer, edges, Graph::View::Top);
 
 				SDL_RenderPresent(renderer);
