@@ -43,8 +43,8 @@ void Graph::drawShape(SDL_Renderer& renderer, std::vector<std::pair<Vector, Vect
 		case Top:
 			x1 = edge.first.pixelX();
 			x2 = edge.second.pixelX();
-			y1 = edge.first.z();
-			y2 = edge.second.z();
+			y1 = edge.first.pixelZ();
+			y2 = edge.second.pixelZ();
 			break;
 		case Front:
 			x1 = edge.first.pixelX();
@@ -53,8 +53,8 @@ void Graph::drawShape(SDL_Renderer& renderer, std::vector<std::pair<Vector, Vect
 			y2 = edge.second.pixelY();
 			break;
 		case Side:
-			x1 = edge.first.z();
-			x2 = edge.second.z();
+			x1 = edge.first.pixelZ();
+			x2 = edge.second.pixelZ();
 			y1 = edge.first.pixelY();
 			y2 = edge.second.pixelY();
 			break;
