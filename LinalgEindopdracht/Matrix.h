@@ -14,7 +14,7 @@ public:
 	Matrix operator*(Matrix const& other);
 
 	std::vector<std::vector<double>>* elems();
-	void setValue(int x, int y, double value);
+	void setValue(int column, int row, double value);
 private:
 	int rows_;
 	int cols_;

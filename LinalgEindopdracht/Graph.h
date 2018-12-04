@@ -25,6 +25,12 @@ public:
 	void translate(int xDirection, int yDirection, int zDirection);
 	void rotate(int degrees);
 	void rotateFromPoint(int degrees, Vector& point);
+	void rotateX(float degrees);
+	void rotateY(float degrees);
+	void rotateZ(float degrees);
+	void rotateAroundAxis(int degrees, Vector& axis);
+	void rotateAroundRandomAxis(int degrees, Vector startPoint, Vector endPoint);
+
 
 private:
 	std::vector<Vector*> vectors;

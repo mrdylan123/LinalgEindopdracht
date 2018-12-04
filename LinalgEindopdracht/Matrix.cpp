@@ -77,7 +77,7 @@ std::vector<std::vector<double>>* Matrix::elems()
 	return &elems_;
 }
 
-void Matrix::setValue(int x, int y, double value)
+void Matrix::setValue(int column, int row, double value)
 {
-	elems_[x][y] = value;
+	elems_[row][column] = value;
 }

@@ -8,9 +8,7 @@ Vector::Vector(int x, int y, int z) : x_(x), y_(y), z_(z)
 }
 
 
-Vector::~Vector()
-{
-}
+Vector::~Vector() {}
 
 void Vector::drawVector(SDL_Renderer& renderer) const
 {
@@ -86,7 +84,7 @@ double Vector::pixelY() const
 
 double Vector::pixelZ() const
 {
-	return 300 + z_ * 60;
+	return 300 + z_ * -60;
 }
 
 Vector* Vector::next() const
