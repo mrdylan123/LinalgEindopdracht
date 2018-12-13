@@ -7,7 +7,7 @@ class Graph;
 class Vector
 {
 public:
-	Vector(int x, int y, int z);
+	Vector(double x, double y, double z);
 	~Vector();
 
 	void drawVector(SDL_Renderer& renderer) const;

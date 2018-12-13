@@ -5,10 +5,12 @@
     <ClCompile Include="Vector.cpp" />
     <ClCompile Include="Matrix.cpp" />
     <ClCompile Include="Graph.cpp" />
+    <ClCompile Include="Shape.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Vector.h" />
     <ClInclude Include="Matrix.h" />
     <ClInclude Include="Graph.h" />
+    <ClInclude Include="Shape.h" />
   </ItemGroup>
 </Project>

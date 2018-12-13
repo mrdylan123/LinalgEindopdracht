@@ -2,7 +2,7 @@
 #include "Graph.h"
 
 
-Vector::Vector(int x, int y, int z) : x_(x), y_(y), z_(z)
+Vector::Vector(double x, double y, double z) : x_(x), y_(y), z_(z)
 {
 
 }
