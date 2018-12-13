@@ -30,6 +30,8 @@ public:
 	void rotateZ(float degrees);
 	void rotateAroundAxis(int degrees, Vector& axis);
 	void rotateAroundRandomAxis(int degrees, Vector startPoint, Vector endPoint);
+    double dotProduct(Vector& v, Vector& w) const;
+    Vector crossProduct(Vector& v, Vector& w) const;
 
 
 private:

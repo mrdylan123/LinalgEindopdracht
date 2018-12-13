@@ -30,7 +30,8 @@ int main()
 		Vector startPoint{ 1, 0, 1 };
 		Vector endPoint{ 1, 1, 1 };
 
-
+        Vector w{ 0, 1, 0 };
+        Vector v{ 1, 0, 0 };
 
 		if (SDL_CreateWindowAndRenderer(600, 600, 0, &window, &renderer) == 0) {
 			SDL_bool done = SDL_FALSE;

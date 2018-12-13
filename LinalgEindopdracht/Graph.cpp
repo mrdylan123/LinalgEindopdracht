@@ -263,3 +263,19 @@ void Graph::rotateAroundRandomAxis(int degrees, Vector startPoint, Vector endPoi
 
 	translate(startPoint.x(), startPoint.y(), startPoint.z());
 }
+
+double Graph::dotProduct(Vector& v, Vector& w) const
+{
+    return v.x() * w.x() + v.y() * w.y() + v.z() * w.z();
+}
+
+Vector Graph::crossProduct(Vector& v, Vector& w) const
+{
+    Vector result{ 0, 0, 0 };
+
+    result.setX(v.y() * w.z() - v.z() * w.y());
+    result.setY(v.z() * w.x() - v.x() * w.z());
+    result.setZ(v.x() * w.y() - v.y() * w.x());
+
+    return result;
+}
