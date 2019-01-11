@@ -18,30 +18,28 @@ int main()
         Vector v4{ 1, 0, 1 };
         Vector v5{ 0.5, 0.5, 0 };
 
-        const std::vector<Vector> vectors{ {v1, v2, v3, v4, v5} };
+        std::vector<Vector> vectors{ {v1, v2, v3, v4, v5} };
+		std::vector<std::pair<Vector*, Vector*>> edges{ {
+				std::make_pair(&vectors[0], &vectors[1]),
+				std::make_pair(&vectors[0], &vectors[4]),
+				std::make_pair(&vectors[0], &vectors[2]),
+				std::make_pair(&vectors[1], &vectors[3]),
+				std::make_pair(&vectors[1], &vectors[4]),
+				std::make_pair(&vectors[2], &vectors[3]),
+				std::make_pair(&vectors[2], &vectors[4]),
+				std::make_pair(&vectors[3], &vectors[4])
+			} };
+		Vector position{ 0, 0, 0 };
 
-        Shape spaceShip{ vectors, {
-            std::make_pair(v1, v2),
-            std::make_pair(v1, v5),
-            std::make_pair(v1, v3),
-            std::make_pair(v2, v4),
-            std::make_pair(v2, v5),
-            std::make_pair(v3, v4),
-            std::make_pair(v3, v5),
-            std::make_pair(v4, v5)
-        } };
-
-
+        std::unique_ptr<Shape> spaceShip = std::make_unique<Shape>(std::move(vectors), std::move(edges), std::move(position));
 
         /*Vector v1{ 0, 0, 0 };
         Vector v2{ 10, 8, 6 };*/
 
         // Add the vectors to the list from graph, drawing them afterwards.
-        graph.addVector(&v1);
-        graph.addVector(&v2);
-        graph.addVector(&v3);
-        graph.addVector(&v4);
-        graph.addVector(&v5);
+        graph.addShape(std::move(spaceShip));
+
+		//graph.initializeCamera();
 
         Vector startPoint{ 1, 0, 1 };
         Vector endPoint{ 1, 1, 1 };
@@ -59,14 +57,12 @@ int main()
                 SDL_RenderClear(renderer);
 
                 SDL_Delay(10);
-                graph.rotateAroundRandomAxis(1, startPoint, endPoint);
-
-
-
+				//graph.camera().position().setZ(graph.camera().position().z() - 0.1);
+				//graph.camera().position().setY(graph.camera().position().y() + 0.001);
+				//graph.camera().position().setX(graph.camera().position().x() + 0.001);
                 graph.draw(*renderer);
 
                 SDL_SetRenderDrawColor(renderer, 255, 0, 0, SDL_ALPHA_OPAQUE);
-                graph.drawShape(*renderer, edges, Graph::View::Top);
 
                 SDL_RenderPresent(renderer);
 

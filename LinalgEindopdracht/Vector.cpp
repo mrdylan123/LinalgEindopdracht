@@ -15,7 +15,7 @@ void Vector::drawVector(SDL_Renderer& renderer) const
 	SDL_RenderDrawLine(&renderer, 300, 300, 300 + x_ * 60, 300 + y_ * -60); // Window is 600x600 so multiply by 60
 }
 
-void Vector::drawAsPoint(SDL_Renderer& renderer, Graph::View view) const
+void Vector::drawAsPoint(SDL_Renderer& renderer) const
 {
 	SDL_SetRenderDrawColor(&renderer, 255, 0, 0, SDL_ALPHA_OPAQUE);
 
@@ -87,12 +87,33 @@ double Vector::pixelZ() const
 	return 300 + z_ * -60;
 }
 
-Vector* Vector::next() const
+
+double Vector::dotProduct(Vector& w) const
 {
-	return next_;
+	return x_ * w.x() + y_ * w.y() + z_ * w.z();
 }
 
-void Vector::setNext(Vector& next)
+Vector Vector::crossProduct(Vector& w) const
 {
-	next_ = &next;
+	Vector result{ 0, 0, 0 };
+
+	result.setX(y_ * w.z() - z_ * w.y());
+	result.setY(z_ * w.x() - x_ * w.z());
+	result.setZ(x_ * w.y() - y_ * w.x());
+
+	return result;
+}
+
+double Vector::length() const
+{
+	return sqrt(x_ * x_ + y_ * y_ + z_ * z_);
+}
+
+void Vector::normalize()
+{
+	const double vLength = length();
+
+	x_ /= vLength;
+	y_ /= vLength;
+	z_ /= vLength;
 }

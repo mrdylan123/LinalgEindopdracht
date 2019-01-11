@@ -1,6 +1,5 @@
 #pragma once
 #include <SDL2/SDL.h>
-#include "Graph.h"
 
 class Graph;
 
@@ -11,7 +10,7 @@ public:
 	~Vector();
 
 	void drawVector(SDL_Renderer& renderer) const;
-	void drawAsPoint(SDL_Renderer& renderer, Graph::View view) const;
+	void drawAsPoint(SDL_Renderer& renderer) const;
 
 	void multiply(int scale);
 	void add(Vector& vector);
@@ -24,18 +23,16 @@ public:
 	double pixelX() const;
 	double pixelY() const;
 	double pixelZ() const;
+	double z() const;
+	void setZ(double z);
+	double dotProduct(Vector& w) const;
+	Vector crossProduct(Vector& w) const;
+	double length() const;
 
-	Vector* next() const;
-	void setNext(Vector& next);
+	void normalize();
 
 private:
 	double x_;
 	double y_;
 	double z_;
-
-public:
-	double z() const;
-	void setZ(double z);
-private:
-	Vector* next_;
 };
