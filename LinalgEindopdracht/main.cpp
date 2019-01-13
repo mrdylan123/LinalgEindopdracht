@@ -3,83 +3,87 @@
 #include "Graph.h"
 #include "Vector.h"
 #include "Shape.h"
+#include "SpaceShip.h"
 
 int main()
 {
     if (SDL_Init(SDL_INIT_VIDEO) == 0) {
-        SDL_Window* window = nullptr;
-        SDL_Renderer* renderer = nullptr;
+	SDL_Window* window = nullptr;
+	SDL_Renderer* renderer = nullptr;
 
-        Graph graph{};
+	Graph graph{};
 
-        Vector v1{ 0, 0, 0 };
-        Vector v2{ 1, 0, 0 };
-        Vector v3{ 0, 0, 1 };
-        Vector v4{ 1, 0, 1 };
-        Vector v5{ 0.5, 0.5, 0 };
+	Vector v1{ -0.5, 0, 0 };
+	Vector v2{ 0.5, 0, 0 };
+	Vector v3{ 0, 0, -1 };
+	Vector v4{ 0, 0.5, 0 };
 
-        std::vector<Vector> vectors{ {v1, v2, v3, v4, v5} };
-		std::vector<std::pair<Vector*, Vector*>> edges{ {
-				std::make_pair(&vectors[0], &vectors[1]),
-				std::make_pair(&vectors[0], &vectors[4]),
-				std::make_pair(&vectors[0], &vectors[2]),
-				std::make_pair(&vectors[1], &vectors[3]),
-				std::make_pair(&vectors[1], &vectors[4]),
-				std::make_pair(&vectors[2], &vectors[3]),
-				std::make_pair(&vectors[2], &vectors[4]),
-				std::make_pair(&vectors[3], &vectors[4])
-			} };
-		Vector position{ 0, 0, 0 };
+	std::vector<Vector> vectors{ {v1, v2, v3, v4} };
+	std::vector<std::pair<Vector*, Vector*>> edges{ {
+			std::make_pair(&vectors[0], &vectors[1]),
+			std::make_pair(&vectors[0], &vectors[2]),
+			std::make_pair(&vectors[0], &vectors[3]),
+			std::make_pair(&vectors[1], &vectors[2]),
+			std::make_pair(&vectors[1], &vectors[3]),
+			std::make_pair(&vectors[2], &vectors[3])
+		} };
+	Vector position{ 0, 0, 0 };
 
-        std::unique_ptr<Shape> spaceShip = std::make_unique<Shape>(std::move(vectors), std::move(edges), std::move(position));
+	std::unique_ptr<SpaceShip> spaceShip = std::make_unique<SpaceShip>(std::move(vectors), std::move(edges), std::move(position));
 
-        /*Vector v1{ 0, 0, 0 };
-        Vector v2{ 10, 8, 6 };*/
+	SpaceShip* ship = spaceShip.get();
 
-        // Add the vectors to the list from graph, drawing them afterwards.
-        graph.addShape(std::move(spaceShip));
+	graph.camera().setLookAt(ship);
 
-		//graph.initializeCamera();
+	// Add the vectors to the list from graph, drawing them afterwards.
+	graph.addShape(std::move(spaceShip));
 
-        Vector startPoint{ 1, 0, 1 };
-        Vector endPoint{ 1, 1, 1 };
+	if (SDL_CreateWindowAndRenderer(600, 600, 0, &window, &renderer) == 0) {
+	    SDL_bool done = SDL_FALSE;
 
-        Vector w{ 0, 1, 0 };
-        Vector v{ 1, 0, 0 };
+	    while (!done) {
+		SDL_Event event;
 
-        if (SDL_CreateWindowAndRenderer(600, 600, 0, &window, &renderer) == 0) {
-            SDL_bool done = SDL_FALSE;
+		SDL_SetRenderDrawColor(renderer, 0, 0, 0, SDL_ALPHA_OPAQUE);
+		SDL_RenderClear(renderer);
 
-            while (!done) {
-                SDL_Event event;
+		SDL_Delay(10);
 
-                SDL_SetRenderDrawColor(renderer, 0, 0, 0, SDL_ALPHA_OPAQUE);
-                SDL_RenderClear(renderer);
+		graph.draw(*renderer);
 
-                SDL_Delay(10);
-				//graph.camera().position().setZ(graph.camera().position().z() - 0.1);
-				//graph.camera().position().setY(graph.camera().position().y() + 0.001);
-				//graph.camera().position().setX(graph.camera().position().x() + 0.001);
-                graph.draw(*renderer);
+		SDL_SetRenderDrawColor(renderer, 255, 0, 0, SDL_ALPHA_OPAQUE);
 
-                SDL_SetRenderDrawColor(renderer, 255, 0, 0, SDL_ALPHA_OPAQUE);
+		SDL_RenderPresent(renderer);
 
-                SDL_RenderPresent(renderer);
+		while (SDL_PollEvent(&event)) {
+		    switch (event.type) {
+		    case SDL_QUIT: done = SDL_TRUE; break;
+		    case SDL_KEYDOWN:
+			switch (event.key.keysym.sym)
+			{
+			case SDLK_a: ship->turnHorizontal(10); break;
+			case SDLK_d: ship->turnHorizontal(-1); break;
+			case SDLK_w: ship->turnVertical(-1); break;
+			case SDLK_s: ship->turnVertical(1); break;
+			case SDLK_q: ship->roll(1); break;
+			case SDLK_e: ship->roll(-1); break;
+			case SDLK_SPACE: ship->fly(); break;
+			case SDLK_UP: graph.camera().moveY(0.1); break;
+			case SDLK_DOWN: graph.camera().moveY(-0.1); break;
+			case SDLK_LEFT: graph.camera().moveX(-0.1); break;
+			case SDLK_RIGHT: graph.camera().moveX(0.1); break;
+			}
+		    }
+		}
+	    }
+	}
 
-                while (SDL_PollEvent(&event)) {
-                    if (event.type == SDL_QUIT) {
-                        done = SDL_TRUE;
-                    }
-                }
-            }
-        }
-
-        if (renderer) {
-            SDL_DestroyRenderer(renderer);
-        }
-        if (window) {
-            SDL_DestroyWindow(window);
-        }
+	if (renderer) {
+	    SDL_DestroyRenderer(renderer);
+	}
+	if (window) {
+	    SDL_DestroyWindow(window);
+	}
     }
     SDL_Quit();
     return 0;

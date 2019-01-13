@@ -7,30 +7,32 @@ class Camera;
 class Shape
 {
 public:
-	Shape(std::vector<Vector> vectors, std::vector<std::pair<Vector*, Vector*>> edges, Vector position);
-	~Shape();
+    Shape(std::vector<Vector> vectors, std::vector<std::pair<Vector*, Vector*>> edges, Vector position);
+    ~Shape();
 
-	void render(SDL_Renderer& renderer, Camera& camera);
-	void scale(int factorX, int factorY, int factorZ);
-	void scaleFromPoint(int factorX, int factorY, int factorZ, Vector& point);
-	void translate(int xDirection, int yDirection, int zDirection);
-	void rotate(int degrees);
-	void rotateFromPoint(int degrees, Vector& point);
-	void rotateX(float degrees);
-	void rotateY(float degrees);
-	void rotateZ(float degrees);
+    virtual void render(SDL_Renderer& renderer, Camera& camera);
+    void scale(int factorX, int factorY, int factorZ);
+    void scaleFromPoint(int factorX, int factorY, int factorZ, Vector& point);
+    void translate(int xDirection, int yDirection, int zDirection);
+    void rotate(int degrees);
+    void rotateFromPoint(int degrees, Vector& point);
+    void rotateX(float degrees);
+    void rotateY(float degrees);
+    void rotateZ(float degrees);
 
-	Vector& position() { return position_; }
+    void updateVectors();
 
-	void rotateAroundAxis(int degrees, Vector& axis);
-	void rotateAroundRandomAxis(int degrees, Vector startPoint, Vector endPoint);
+    Vector& position() { return position_; }
 
-	std::vector<Vector>& vectors() { return vectors_; }
-	std::vector<std::pair<Vector*, Vector*>>& edges() { return edges_; }
+    void rotateAroundAxis(int degrees, Vector& axis);
+    void rotateAroundRandomAxis(int degrees, Vector startPoint, Vector endPoint);
 
-private:
-	std::vector<Vector> vectors_;
-	Vector position_;
-	std::vector<std::pair<Vector*, Vector*>> edges_;
+    std::vector<Vector>& vectors() { return vectors_; }
+    std::vector<std::pair<Vector*, Vector*>>& edges() { return edges_; }
+
+protected:
+    std::vector<Vector> vectors_;
+    Vector position_;
+    std::vector<std::pair<Vector*, Vector*>> edges_;
 };
 
