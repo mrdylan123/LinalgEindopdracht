@@ -18,12 +18,14 @@ public:
 
     void setLookAt(Shape* lookAt) { lookAt_ = lookAt; }
 
-	void move() override;
+    void move() override;
     void moveX(float amount);
     void moveY(float amount);
+    void moveZ(float amount);
+    void zoom(float amount);
 
-	void rotateHorizontal(double degrees);
-	void rotateVertical(double degrees);
+    void rotateHorizontal(double degrees);
+    void rotateVertical(double degrees);
 
 private:
     World* graph_;

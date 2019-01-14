@@ -42,7 +42,7 @@ void SpaceShip::roll(float degrees)
 void SpaceShip::fly()
 {
 	if (speed_ < 1)
-		speed_ += 0.05;
+		speed_ += 0.1;
 }
 
 void SpaceShip::brake()
