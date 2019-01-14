@@ -1,6 +1,8 @@
 #pragma once
 #include "CollidableShape.h"
 
+class Vector;
+
 class Asteroid : public CollidableShape
 {
 public:

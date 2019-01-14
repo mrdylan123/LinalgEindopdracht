@@ -1,20 +1,18 @@
-#include "Graph.h"
-#include "Matrix.h"
+#include "World.h"
 #define _USE_MATH_DEFINES
 #include "Vector.h"
-#include "Shape.h"
-#include "SpaceShip.h"
+#include "Shapes/Shape.h"
+#include "Shapes/SpaceShip.h"
 
-Graph::Graph() : camera_{ this }
+World::World() : camera_{ this }
 {
 }
 
-
-Graph::~Graph()
+World::~World()
 {
 }
 
-void Graph::update(SDL_Renderer& renderer)
+void World::update(SDL_Renderer& renderer)
 {
 	SDL_SetRenderDrawColor(&renderer, 255, 255, 255, SDL_ALPHA_OPAQUE);
 
@@ -69,7 +67,7 @@ void Graph::update(SDL_Renderer& renderer)
 	}
 }
 
-void Graph::initializeCamera()
+void World::initializeCamera()
 {
 	camera_.lookatMatrix();
 }

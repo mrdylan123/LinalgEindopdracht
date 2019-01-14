@@ -1,19 +1,18 @@
 #pragma once
-#include <SDL2/SDL.h>
 #include <vector>
 #include <memory>
-#include "Shape.h"
+#include "Shapes/Shape.h"
 #include "Camera.h"
-#include "Planet.h"
-#include "Asteroid.h"
+#include "Shapes/Planet.h"
+#include "Shapes/Asteroid.h"
 
 class Vector;
 
-class Graph
+class World
 {
 public:
-	Graph();
-	~Graph();
+	World();
+	~World();
 
 	enum View
 	{

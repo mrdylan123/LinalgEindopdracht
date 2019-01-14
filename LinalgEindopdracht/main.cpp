@@ -1,10 +1,10 @@
 #define SDL_MAIN_HANDLED
 #include <SDL2/SDL.h>
-#include "Graph.h"
+#include "World.h"
 #include "Vector.h"
-#include "Shape.h"
-#include "SpaceShip.h"
-#include "Planet.h"
+#include "Shapes/Shape.h"
+#include "Shapes/SpaceShip.h"
+#include "Shapes/Planet.h"
 
 int main()
 {
@@ -12,7 +12,7 @@ int main()
 		SDL_Window* window = nullptr;
 		SDL_Renderer* renderer = nullptr;
 
-		Graph graph{};
+		World graph{};
 
 		// Spaceship
 		std::unique_ptr<SpaceShip> spaceShip = std::make_unique<SpaceShip>();

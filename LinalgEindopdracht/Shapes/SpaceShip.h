@@ -12,7 +12,7 @@ public:
 	void fly();
 	void brake();
 	void move() override;
-	void shoot(Graph* graph);
+	void shoot(World* graph);
 	void toggleGuideLine();
 	const Vector* direction() const { return &direction_; }
 	bool destroyed() const { return destroyed_; }

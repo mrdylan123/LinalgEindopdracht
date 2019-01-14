@@ -4,25 +4,54 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Vector.cpp" />
     <ClCompile Include="Matrix.cpp" />
-    <ClCompile Include="Graph.cpp" />
-    <ClCompile Include="Shape.cpp" />
     <ClCompile Include="Camera.cpp" />
-    <ClCompile Include="SpaceShip.cpp" />
-    <ClCompile Include="Projectile.cpp" />
-    <ClCompile Include="Planet.cpp" />
-    <ClCompile Include="Asteroid.cpp" />
-    <ClCompile Include="CollidableShape.cpp" />
+    <ClCompile Include="Shapes\Asteroid.cpp">
+      <Filter>Shapes</Filter>
+    </ClCompile>
+    <ClCompile Include="Shapes\CollidableShape.cpp">
+      <Filter>Shapes</Filter>
+    </ClCompile>
+    <ClCompile Include="Shapes\Planet.cpp">
+      <Filter>Shapes</Filter>
+    </ClCompile>
+    <ClCompile Include="Shapes\Projectile.cpp">
+      <Filter>Shapes</Filter>
+    </ClCompile>
+    <ClCompile Include="Shapes\Shape.cpp">
+      <Filter>Shapes</Filter>
+    </ClCompile>
+    <ClCompile Include="Shapes\SpaceShip.cpp">
+      <Filter>Shapes</Filter>
+    </ClCompile>
+    <ClCompile Include="World.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Vector.h" />
     <ClInclude Include="Matrix.h" />
-    <ClInclude Include="Graph.h" />
-    <ClInclude Include="Shape.h" />
     <ClInclude Include="Camera.h" />
-    <ClInclude Include="SpaceShip.h" />
-    <ClInclude Include="Projectile.h" />
-    <ClInclude Include="Planet.h" />
-    <ClInclude Include="Asteroid.h" />
-    <ClInclude Include="CollidableShape.h" />
+    <ClInclude Include="Shapes\Asteroid.h">
+      <Filter>Shapes</Filter>
+    </ClInclude>
+    <ClInclude Include="Shapes\CollidableShape.h">
+      <Filter>Shapes</Filter>
+    </ClInclude>
+    <ClInclude Include="Shapes\Planet.h">
+      <Filter>Shapes</Filter>
+    </ClInclude>
+    <ClInclude Include="Shapes\Projectile.h">
+      <Filter>Shapes</Filter>
+    </ClInclude>
+    <ClInclude Include="Shapes\Shape.h">
+      <Filter>Shapes</Filter>
+    </ClInclude>
+    <ClInclude Include="Shapes\SpaceShip.h">
+      <Filter>Shapes</Filter>
+    </ClInclude>
+    <ClInclude Include="World.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Shapes">
+      <UniqueIdentifier>{f551dcbf-f147-46f8-b306-304618a9f02d}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
 </Project>

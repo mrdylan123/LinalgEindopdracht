@@ -1,7 +1,7 @@
 #include "Shape.h"
-#include "Matrix.h"
+#include "../Matrix.h"
 #include <corecrt_math_defines.h>
-#include "Camera.h"
+#include "../Camera.h"
 
 
 Shape::Shape(std::vector<Vector> vectors, std::vector<std::pair<Vector*, Vector*>> edges, Vector position) : vectors_{ std::move(vectors) }, edges_{ std::move(edges) }, position_{ std::move(position) }, speedVector_{ 0, 0, 0 }, speed_{ 0 }

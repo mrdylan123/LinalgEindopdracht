@@ -1,12 +1,12 @@
 #include "Camera.h"
 #include "Matrix.h"
-#include "Graph.h"
-#include "Shape.h"
+#include "World.h"
+#include "Shapes/Shape.h"
 #include "Vector.h"
 #include <corecrt_math_defines.h>
 
 
-Camera::Camera(Graph* graph) : Shape(std::vector<Vector>{{0, 1.5, 1}}, std::vector<std::pair<Vector*, Vector*>>{}, { 0, 1.5, 1 }), graph_{ graph }, projectionMatrix_{ 4, 4 }, fovy_{ 90 }, near_{ 0.1 }, far_{ 100 }
+Camera::Camera(World* graph) : Shape(std::vector<Vector>{{0, 1.5, 1}}, std::vector<std::pair<Vector*, Vector*>>{}, { 0, 1.5, 1 }), graph_{ graph }, projectionMatrix_{ 4, 4 }, fovy_{ 90 }, near_{ 0.1 }, far_{ 100 }
 {
 	double povyRad = fovy_ / 180.0 * static_cast<double>(M_PI);
 	double scale = near_ * tan(povyRad * 0.5);

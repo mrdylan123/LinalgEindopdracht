@@ -1,6 +1,6 @@
 #pragma once
 #include "Matrix.h"
-#include "Shape.h"
+#include "Shapes/Shape.h"
 
 class Vector;
 class Matrix;
@@ -9,7 +9,7 @@ class Shape;
 class Camera : public Shape
 {
 public:
-    Camera(Graph* graph);
+    Camera(World* graph);
     ~Camera();
 
     Matrix lookatMatrix();
@@ -26,7 +26,7 @@ public:
 	void rotateVertical(double degrees);
 
 private:
-    Graph* graph_;
+    World* graph_;
     Matrix projectionMatrix_;
     Shape* lookAt_;
     double far_;

@@ -1,6 +1,6 @@
 #include "SpaceShip.h"
-#include "Camera.h"
-#include "Graph.h"
+#include "../Camera.h"
+#include "../World.h"
 #include "Projectile.h"
 
 
@@ -77,7 +77,7 @@ void SpaceShip::move()
 		speed_ -= 0.001;
 }
 
-void SpaceShip::shoot(Graph* graph)
+void SpaceShip::shoot(World* graph)
 {
 	graph->addShape(std::make_unique<Projectile>(this));
 }

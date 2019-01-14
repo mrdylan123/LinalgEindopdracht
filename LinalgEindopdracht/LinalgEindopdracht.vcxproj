@@ -115,28 +115,28 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Asteroid.cpp" />
+    <ClCompile Include="Shapes\Asteroid.cpp" />
     <ClCompile Include="Camera.cpp" />
-    <ClCompile Include="CollidableShape.cpp" />
-    <ClCompile Include="Graph.cpp" />
+    <ClCompile Include="Shapes\CollidableShape.cpp" />
+    <ClCompile Include="World.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Matrix.cpp" />
-    <ClCompile Include="Planet.cpp" />
-    <ClCompile Include="Projectile.cpp" />
-    <ClCompile Include="Shape.cpp" />
-    <ClCompile Include="SpaceShip.cpp" />
+    <ClCompile Include="Shapes\Planet.cpp" />
+    <ClCompile Include="Shapes\Projectile.cpp" />
+    <ClCompile Include="Shapes\Shape.cpp" />
+    <ClCompile Include="Shapes\SpaceShip.cpp" />
     <ClCompile Include="Vector.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Asteroid.h" />
+    <ClInclude Include="Shapes\Asteroid.h" />
     <ClInclude Include="Camera.h" />
-    <ClInclude Include="CollidableShape.h" />
-    <ClInclude Include="Graph.h" />
+    <ClInclude Include="Shapes\CollidableShape.h" />
+    <ClInclude Include="World.h" />
     <ClInclude Include="Matrix.h" />
-    <ClInclude Include="Planet.h" />
-    <ClInclude Include="Projectile.h" />
-    <ClInclude Include="Shape.h" />
-    <ClInclude Include="SpaceShip.h" />
+    <ClInclude Include="Shapes\Planet.h" />
+    <ClInclude Include="Shapes\Projectile.h" />
+    <ClInclude Include="Shapes\Shape.h" />
+    <ClInclude Include="Shapes\SpaceShip.h" />
     <ClInclude Include="Vector.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

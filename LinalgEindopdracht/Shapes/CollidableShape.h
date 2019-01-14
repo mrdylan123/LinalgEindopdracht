@@ -1,5 +1,7 @@
 #pragma once
 #include "Shape.h"
+#include "../Vector.h"
+
 class CollidableShape : public Shape
 {
 public:
