@@ -13,7 +13,7 @@ public:
     void drawAsPoint(SDL_Renderer& renderer) const;
 
     void multiply(double scale);
-    void add(Vector& vector);
+    void add(const Vector& vector);
     void subtract(Vector& vector);
 
     double x() const;

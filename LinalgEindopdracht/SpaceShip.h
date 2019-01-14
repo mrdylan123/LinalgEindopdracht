@@ -3,14 +3,28 @@
 class SpaceShip : public Shape
 {
 public:
-    SpaceShip(std::vector<Vector> vectors, std::vector<std::pair<Vector*, Vector*>> edges, Vector position);
-    ~SpaceShip();
+	SpaceShip();
+	~SpaceShip();
 
-    void turnHorizontal(float degrees);
-    void turnVertical(float degrees);
-    void roll(float degrees);
-    void fly();
+	void turnHorizontal(float degrees);
+	void turnVertical(float degrees);
+	void roll(float degrees);
+	void fly();
+	void brake();
+	void move() override;
+	void shoot(Graph* graph);
+	void toggleGuideLine();
+	const Vector* direction() const { return &direction_; }
+	bool destroyed() const { return destroyed_; }
+	void setDestroyed(bool destroyed) { destroyed_ = destroyed; }
 
-    void render(SDL_Renderer& renderer, Camera& camera) override;
+	void reset();
+
+	void update(SDL_Renderer& renderer, Camera& camera) override;
+
+private:
+	Vector direction_;
+	bool guideLine_;
+	bool destroyed_;
 };
 

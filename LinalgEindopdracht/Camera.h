@@ -1,9 +1,12 @@
 #pragma once
-#include "Vector.h"
 #include "Matrix.h"
 #include "Shape.h"
 
-class Camera
+class Vector;
+class Matrix;
+class Shape;
+
+class Camera : public Shape
 {
 public:
     Camera(Graph* graph);
@@ -13,20 +16,21 @@ public:
 
     void drawInWindow(SDL_Renderer& renderer, Vector& vector1, Vector& vector2);
 
-    Vector& position() { return position_; }
-
     void setLookAt(Shape* lookAt) { lookAt_ = lookAt; }
 
+	void move() override;
     void moveX(float amount);
     void moveY(float amount);
+
+	void rotateHorizontal(double degrees);
+	void rotateVertical(double degrees);
 
 private:
     Graph* graph_;
     Matrix projectionMatrix_;
-    Vector position_;
     Shape* lookAt_;
     double far_;
-    double near_; // Anything below this value doesn't have to be drawn
+    double near_;
     double fovy_;
 };
 

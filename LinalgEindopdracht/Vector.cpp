@@ -30,7 +30,7 @@ void Vector::multiply(double scale)
     z_ = z_ * scale;
 }
 
-void Vector::add(Vector& vector)
+void Vector::add(const Vector& vector)
 {
     x_ += vector.x_;
     y_ += vector.y_;

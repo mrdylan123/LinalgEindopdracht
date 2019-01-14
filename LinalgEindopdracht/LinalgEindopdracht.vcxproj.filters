@@ -8,6 +8,10 @@
     <ClCompile Include="Shape.cpp" />
     <ClCompile Include="Camera.cpp" />
     <ClCompile Include="SpaceShip.cpp" />
+    <ClCompile Include="Projectile.cpp" />
+    <ClCompile Include="Planet.cpp" />
+    <ClCompile Include="Asteroid.cpp" />
+    <ClCompile Include="CollidableShape.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Vector.h" />
@@ -16,5 +20,9 @@
     <ClInclude Include="Shape.h" />
     <ClInclude Include="Camera.h" />
     <ClInclude Include="SpaceShip.h" />
+    <ClInclude Include="Projectile.h" />
+    <ClInclude Include="Planet.h" />
+    <ClInclude Include="Asteroid.h" />
+    <ClInclude Include="CollidableShape.h" />
   </ItemGroup>
 </Project>
